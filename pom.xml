@@ -10,6 +10,7 @@
 
 	<properties>
 		<javaee-api.version>7.0</javaee-api.version>
+		<compiler-version>1.8</compiler-version>
 	</properties>
 
 	<dependencies>
@@ -20,5 +21,19 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${compiler-version}</source>
+					<target>${compiler-version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

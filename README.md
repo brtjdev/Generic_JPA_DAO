@@ -1,1 +1,0 @@
-Generic JPA DAO

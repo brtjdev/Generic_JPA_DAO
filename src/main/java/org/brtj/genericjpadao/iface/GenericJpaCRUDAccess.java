@@ -1,4 +1,4 @@
-package org.brtj.genericjpadao;
+package org.brtj.genericjpadao.iface;
 
 import java.util.List;
 

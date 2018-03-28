@@ -99,5 +99,13 @@ public class GenericJpaReadOnlyDao implements GenericJpaReadOnlyAccess {
 		Query query = entityManager.createNativeQuery(nativeQueryName);
 		return findWithQuery(query, parameters, resultLimit);
 	}
+
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 	
 }

@@ -14,6 +14,8 @@ public interface GenericJpaCRUDAccess extends GenericJpaReadOnlyAccess {
 	
 	<T> void delete(T entity);
 	
-	<T> void deleteAll(Class<T> entityClass);
+	<T> Integer deleteAll(Class<T> entityClass);
+	
+	<T> void deleteAll(List<T> entityList);
 	
 }

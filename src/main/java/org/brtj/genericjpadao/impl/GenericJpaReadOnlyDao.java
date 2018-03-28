@@ -14,18 +14,20 @@ import javax.persistence.criteria.Root;
 
 import org.brtj.genericjpadao.iface.GenericJpaReadOnlyAccess;
 
-public class GenericReadOnlyJpaDao implements GenericJpaReadOnlyAccess {
+public class GenericJpaReadOnlyDao implements GenericJpaReadOnlyAccess {
+	
+	private static final Integer NO_LIMIT = 0;
 	
 	@PersistenceContext
-    private  EntityManager entityManager;
+    protected  EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
-	private <T> List<T> findWithQuery(Query query, Map<String, Object> parameters, int resultLimit) {
+	public <T> List<T> findWithQuery(Query query, Map<String, Object> parameters, int resultLimit) {
 		if (parameters != null) {
 			Set<String> keySet = parameters.keySet();
 			for (String key : keySet) query.setParameter(key, parameters.get(key));
 		}
-		if (resultLimit > 0) {
+		if (resultLimit > NO_LIMIT) {
 			query.setMaxResults(resultLimit);
 		}
 		return (List<T>) query.getResultList();
@@ -58,7 +60,7 @@ public class GenericReadOnlyJpaDao implements GenericJpaReadOnlyAccess {
 
 	@Override
 	public <T> List<T> findWithNamedQuery(String namedQueryName) {
-		return findWithNamedQuery(namedQueryName, null, -1);
+		return findWithNamedQuery(namedQueryName, null, NO_LIMIT);
 	}
 
 	@Override
@@ -68,7 +70,7 @@ public class GenericReadOnlyJpaDao implements GenericJpaReadOnlyAccess {
 
 	@Override
 	public <T> List<T> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters) {
-		return findWithNamedQuery(namedQueryName, parameters, -1);
+		return findWithNamedQuery(namedQueryName, parameters, NO_LIMIT);
 	}
 
 	@Override
@@ -79,7 +81,7 @@ public class GenericReadOnlyJpaDao implements GenericJpaReadOnlyAccess {
 
 	@Override
 	public <T> List<T> findWithNativeQuery(String nativeQueryName) {
-		return findWithNativeQuery(nativeQueryName, null, -1);
+		return findWithNativeQuery(nativeQueryName, null, NO_LIMIT);
 	}
 
 	@Override
@@ -89,7 +91,7 @@ public class GenericReadOnlyJpaDao implements GenericJpaReadOnlyAccess {
 
 	@Override
 	public <T> List<T> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters) {
-		return findWithNativeQuery(nativeQueryName, parameters, -1);
+		return findWithNativeQuery(nativeQueryName, parameters, NO_LIMIT);
 	}
 
 	@Override

@@ -21,7 +21,6 @@ public class GenericJpaReadOnlyDao implements GenericJpaReadOnlyAccess {
 	@PersistenceContext
     protected  EntityManager entityManager;
 	
-	@SuppressWarnings("unchecked")
 	public List<?> findWithQuery(Query query, Map<String, Object> parameters, int resultLimit) {
 		if (parameters != null) {
 			Set<String> keySet = parameters.keySet();

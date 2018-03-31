@@ -11,21 +11,21 @@ public interface GenericJpaReadOnlyAccess {
 
 	<T> List<T> getAll(Class<T> entityClass);
 
-	<T> List<T> findWithNamedQuery(String namedQueryName);
+	List<?> findWithNamedQuery(String namedQueryName);
 
-	<T> List<T> findWithNamedQuery(String namedQueryName, int resultLimit);
+	List<?> findWithNamedQuery(String namedQueryName, int resultLimit);
 
-	<T> List<T> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters);
+	List<?> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters);
 
-	<T> List<T> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters, int resultLimit);
+	List<?> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters, int resultLimit);
 
-	<T> List<T> findWithNativeQuery(String nativeQueryName);
+	List<?> findWithNativeQuery(String nativeQueryName);
 
-	<T> List<T> findWithNativeQuery(String nativeQueryName, int resultLimit);
+	List<?> findWithNativeQuery(String nativeQueryName, int resultLimit);
 
-	<T> List<T> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters);
+	List<?> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters);
 
-	<T> List<T> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters, int resultLimit);
+	List<?> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters, int resultLimit);
 
 	// <T> List<T> findByProperties(Class<T> entityClass, Map<String, Object>
 	// properties);

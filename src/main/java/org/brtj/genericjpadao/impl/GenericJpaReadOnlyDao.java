@@ -22,7 +22,7 @@ public class GenericJpaReadOnlyDao implements GenericJpaReadOnlyAccess {
     protected  EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
-	public <T> List<T> findWithQuery(Query query, Map<String, Object> parameters, int resultLimit) {
+	public List<?> findWithQuery(Query query, Map<String, Object> parameters, int resultLimit) {
 		if (parameters != null) {
 			Set<String> keySet = parameters.keySet();
 			for (String key : keySet) query.setParameter(key, parameters.get(key));
@@ -30,7 +30,7 @@ public class GenericJpaReadOnlyDao implements GenericJpaReadOnlyAccess {
 		if (resultLimit > NO_LIMIT) {
 			query.setMaxResults(resultLimit);
 		}
-		return (List<T>) query.getResultList();
+		return (List<?>) query.getResultList();
 	}
 
 	@Override
@@ -59,43 +59,43 @@ public class GenericJpaReadOnlyDao implements GenericJpaReadOnlyAccess {
 	}
 
 	@Override
-	public <T> List<T> findWithNamedQuery(String namedQueryName) {
+	public List<?> findWithNamedQuery(String namedQueryName) {
 		return findWithNamedQuery(namedQueryName, null, NO_LIMIT);
 	}
 
 	@Override
-	public <T> List<T> findWithNamedQuery(String namedQueryName, int resultLimit) {
+	public List<?> findWithNamedQuery(String namedQueryName, int resultLimit) {
 		return findWithNamedQuery(namedQueryName, null, resultLimit);
 	}
 
 	@Override
-	public <T> List<T> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters) {
+	public List<?> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters) {
 		return findWithNamedQuery(namedQueryName, parameters, NO_LIMIT);
 	}
 
 	@Override
-	public <T> List<T> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters, int resultLimit) {
+	public List<?> findWithNamedQuery(String namedQueryName, Map<String, Object> parameters, int resultLimit) {
 		Query query = entityManager.createNamedQuery(namedQueryName);
 		return findWithQuery(query, parameters, resultLimit);
 	}
 
 	@Override
-	public <T> List<T> findWithNativeQuery(String nativeQueryName) {
+	public List<?> findWithNativeQuery(String nativeQueryName) {
 		return findWithNativeQuery(nativeQueryName, null, NO_LIMIT);
 	}
 
 	@Override
-	public <T> List<T> findWithNativeQuery(String nativeQueryName, int resultLimit) {
+	public List<?> findWithNativeQuery(String nativeQueryName, int resultLimit) {
 		return findWithNativeQuery(nativeQueryName, null, resultLimit);
 	}
 
 	@Override
-	public <T> List<T> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters) {
+	public List<?> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters) {
 		return findWithNativeQuery(nativeQueryName, parameters, NO_LIMIT);
 	}
 
 	@Override
-	public <T> List<T> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters, int resultLimit) {
+	public List<?> findWithNativeQuery(String nativeQueryName, Map<String, Object> parameters, int resultLimit) {
 		Query query = entityManager.createNativeQuery(nativeQueryName);
 		return findWithQuery(query, parameters, resultLimit);
 	}
